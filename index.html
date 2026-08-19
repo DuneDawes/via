@@ -8,45 +8,31 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg: #050405;
-      --bg-card: #0e0a0c;
-      --rose: #6b1525;
-      --rose-bright: #9b1e32;
-      --rose-deep: #3d0c16;
-      --silver: #c8c2b8;
-      --silver-bright: #e8e4dc;
-      --muted: #8a8178;
-    }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       min-height: 100vh;
-      background: var(--bg);
-      color: var(--silver);
-      font-family: 'Cormorant Garamond', Georgia, serif;
+      background: #000;
+      color: #d4d0c8;
+      font-family: 'Cinzel', serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 48px 20px 70px;
+      padding: 0 0 60px;
       position: relative;
-      overflow-x: hidden;
     }
 
-    /* smoky vignette */
+    /* full-bleed dark vignette */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(107,21,37,0.18) 0%, transparent 55%),
-        radial-gradient(ellipse at 50% 100%, rgba(0,0,0,0.7) 0%, transparent 50%),
-        radial-gradient(ellipse at 20% 40%, rgba(61,12,22,0.25) 0%, transparent 40%),
-        radial-gradient(ellipse at 80% 60%, rgba(61,12,22,0.2) 0%, transparent 40%);
+        radial-gradient(ellipse at 50% 20%, rgba(40,10,15,0.45) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 80%, rgba(0,0,0,0.85) 0%, transparent 50%);
       pointer-events: none;
       z-index: 0;
     }
@@ -55,271 +41,251 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 400px;
+      max-width: 440px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 50px 24px 0;
     }
 
-    /* Top VIA */
-    .via-top {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.55em;
+    /* VIA */
+    .via {
+      font-size: 0.78rem;
+      letter-spacing: 0.65em;
       text-transform: uppercase;
-      color: var(--silver);
-      margin-bottom: 18px;
-      opacity: 0.9;
+      color: #b0a99e;
+      margin-bottom: 22px;
     }
-    .via-top span {
-      opacity: 0.5;
-      letter-spacing: 0.2em;
+    .via::before, .via::after {
+      content: "•";
+      opacity: 0.4;
+      margin: 0 10px;
+      letter-spacing: 0;
     }
 
-    /* Main title */
+    /* Main title - metallic feel */
     h1 {
       font-family: 'Cinzel', serif;
       font-weight: 600;
-      font-size: 1.85rem;
-      letter-spacing: 0.12em;
+      font-size: clamp(1.7rem, 6.5vw, 2.15rem);
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       text-align: center;
-      line-height: 1.15;
-      color: var(--silver-bright);
+      line-height: 1.12;
+      color: #e8e4dc;
       text-shadow:
-        0 1px 0 #2a2520,
-        0 2px 8px rgba(0,0,0,0.8),
-        0 0 40px rgba(200,194,184,0.15);
-      margin-bottom: 6px;
+        0 1px 0 #3a3530,
+        0 2px 4px rgba(0,0,0,0.9),
+        0 0 30px rgba(200,190,170,0.12);
+      margin-bottom: 4px;
     }
 
-    h1 .line2 {
+    h1 span {
       display: block;
-      font-size: 1.95rem;
-      letter-spacing: 0.08em;
+      font-size: 1.05em;
+      letter-spacing: 0.1em;
     }
 
-    /* Divider with shield feel */
-    .ornament {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 20px 0 18px;
-      width: 100%;
-      max-width: 260px;
-    }
-    .ornament-line {
-      flex: 1;
+    /* thin ornamental line */
+    .rule {
+      width: 160px;
       height: 1px;
-      background: linear-gradient(90deg, transparent, #5a4a42, transparent);
+      background: linear-gradient(90deg, transparent, #6a635a, transparent);
+      margin: 22px 0 14px;
+      position: relative;
     }
-    .ornament-center {
-      width: 8px;
-      height: 8px;
-      border: 1px solid #7a6a60;
-      transform: rotate(45deg);
-      background: #1a1214;
+    .rule::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 6px;
+      height: 6px;
+      border: 1px solid #6a635a;
+      background: #000;
     }
 
-    /* Pillars line */
     .pillars {
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.28em;
+      font-size: 0.68rem;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 32px;
-      text-align: center;
+      color: #7a736a;
+      margin-bottom: 40px;
     }
 
-    /* Shield-style avatar */
-    .shield {
-      width: 92px;
-      height: 108px;
-      margin-bottom: 28px;
+    /* central rose emblem */
+    .emblem {
+      width: 86px;
+      height: 100px;
+      margin-bottom: 36px;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .shield-inner {
-      width: 78px;
-      height: 92px;
-      background: linear-gradient(160deg, #1a1216 0%, #0c080a 100%);
-      border: 1.5px solid #4a3a35;
-      clip-path: polygon(50% 0%, 100% 12%, 100% 70%, 50% 100%, 0% 70%, 0% 12%);
+
+    .emblem-shield {
+      width: 72px;
+      height: 86px;
+      background: linear-gradient(165deg, #1a1614 0%, #0a0808 100%);
+      border: 1px solid #4a433c;
+      clip-path: polygon(50% 0%, 100% 10%, 100% 68%, 50% 100%, 0% 68%, 0% 10%);
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow:
-        0 0 0 1px rgba(0,0,0,0.8),
-        0 8px 24px rgba(0,0,0,0.6),
-        inset 0 1px 0 rgba(200,194,184,0.08);
-    }
-    .shield-rose {
-      font-size: 2.1rem;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+        0 0 0 1px #000,
+        0 10px 30px rgba(0,0,0,0.7),
+        inset 0 1px 0 rgba(200,190,170,0.06);
     }
 
-    /* Links */
+    .emblem-rose {
+      font-size: 1.9rem;
+      line-height: 1;
+      filter: grayscale(0.15) contrast(1.1);
+    }
+
+    /* buttons */
     .links {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 11px;
     }
 
-    .link-btn {
+    .btn {
       display: block;
       text-decoration: none;
       text-align: center;
-      padding: 17px 20px;
-      position: relative;
-      transition: all 0.25s ease;
-      background: linear-gradient(180deg, #141014 0%, #0c090b 100%);
-      border: 1px solid #3a2a28;
-      color: var(--silver);
+      padding: 16px 18px;
+      background: #0c0a0a;
+      border: 1px solid #2e2a26;
+      color: #d4d0c8;
+      transition: all 0.2s ease;
       font-family: 'Cinzel', serif;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
     }
 
-    .link-btn.primary {
-      border-color: #5c1e28;
-      background: linear-gradient(160deg, #1a0c10 0%, #12080c 50%, #1a0c10 100%);
-      box-shadow:
-        0 0 0 1px rgba(107,21,37,0.25),
-        0 6px 20px rgba(0,0,0,0.5),
-        inset 0 1px 0 rgba(155,30,50,0.08);
+    .btn.primary {
+      border-color: #4a1e24;
+      background: linear-gradient(180deg, #120c0e 0%, #0a0708 100%);
+      box-shadow: 0 0 0 1px rgba(80,20,30,0.2);
     }
 
-    .link-btn.primary:hover {
-      border-color: var(--rose-bright);
-      transform: translateY(-1px);
-      box-shadow:
-        0 0 0 1px rgba(155,30,50,0.35),
-        0 10px 28px rgba(107,21,37,0.25),
-        inset 0 1px 0 rgba(155,30,50,0.12);
+    .btn.primary:hover {
+      border-color: #7a2e38;
+      background: #140e10;
     }
 
-    .link-btn.secondary {
-      border-color: #2e2420;
-    }
-    .link-btn.secondary:hover {
-      border-color: #5a4a42;
-      background: #161214;
+    .btn.secondary:hover {
+      border-color: #4a433c;
+      background: #121010;
     }
 
     .btn-title {
       display: block;
       font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 3px;
-      color: var(--silver-bright);
+      font-size: 0.9rem;
+      color: #e8e4dc;
+      margin-bottom: 2px;
     }
 
     .btn-sub {
       display: block;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.03em;
-      color: var(--muted);
-      font-weight: 400;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: #7a736a;
+      text-transform: uppercase;
     }
 
-    .price-tag {
+    .price {
       display: inline-block;
-      margin-top: 7px;
-      padding: 2px 11px;
-      border: 1px solid rgba(155,30,50,0.45);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      color: #c45a6a;
-      background: rgba(107,21,37,0.15);
+      margin-top: 8px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: #a05060;
+      border: 1px solid #4a1e24;
+      padding: 2px 10px;
     }
 
-    /* Socials */
+    /* socials */
     .socials {
       display: flex;
-      gap: 14px;
-      margin-top: 36px;
+      gap: 12px;
+      margin-top: 40px;
     }
 
-    .social-link {
-      width: 42px;
-      height: 42px;
-      border: 1px solid #2e2420;
+    .social {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #2e2a26;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--muted);
+      color: #7a736a;
       text-decoration: none;
-      transition: all 0.25s ease;
-      background: #0e0a0c;
+      transition: all 0.2s ease;
+      background: #0a0808;
     }
 
-    .social-link:hover {
-      border-color: #5a4a42;
-      color: var(--silver);
+    .social:hover {
+      border-color: #4a433c;
+      color: #d4d0c8;
     }
 
-    .social-link svg {
-      width: 18px;
-      height: 18px;
+    .social svg {
+      width: 17px;
+      height: 17px;
       fill: currentColor;
     }
 
     footer {
-      margin-top: 48px;
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.35em;
+      margin-top: 50px;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: #4a3f38;
+      color: #3a3530;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="via-top"><span>•</span> VIA <span>•</span></div>
+    <div class="via">VIA</div>
 
     <h1>
       Aesthetic
-      <span class="line2">Blueprint</span>
+      <span>Blueprint</span>
     </h1>
 
-    <div class="ornament">
-      <div class="ornament-line"></div>
-      <div class="ornament-center"></div>
-      <div class="ornament-line"></div>
-    </div>
+    <div class="rule"></div>
 
     <div class="pillars">Looks • Presence • Structure</div>
 
-    <!-- Shield -->
-    <div class="shield">
-      <div class="shield-inner">
-        <div class="shield-rose">🌹</div>
+    <div class="emblem">
+      <div class="emblem-shield">
+        <div class="emblem-rose">🌹</div>
       </div>
     </div>
 
     <div class="links">
-      <a href="#REPLACE-WITH-YOUR-CHECKOUT-LINK" class="link-btn primary">
+      <a href="#REPLACE-WITH-YOUR-CHECKOUT-LINK" class="btn primary">
         <span class="btn-title">Aesthetic Blueprint</span>
-        <span class="btn-sub">The full system</span>
-        <span class="price-tag">$35</span>
+        <span class="btn-sub">Full Access</span>
+        <span class="price">$35</span>
       </a>
 
-      <a href="https://www.instagram.com/viakhn/?hl=en" class="link-btn secondary" target="_blank" rel="noopener">
+      <a href="https://www.instagram.com/viakhn/?hl=en" class="btn secondary" target="_blank" rel="noopener">
         <span class="btn-title">Instagram</span>
         <span class="btn-sub">@viakhn</span>
       </a>
     </div>
 
     <div class="socials">
-      <a href="https://www.instagram.com/viakhn/?hl=en" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+      <a href="https://www.instagram.com/viakhn/?hl=en" class="social" aria-label="Instagram" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
       </a>
-      <a href="https://www.tiktok.com/@via040301" class="social-link" aria-label="TikTok" target="_blank" rel="noopener">
+      <a href="https://www.tiktok.com/@via040301" class="social" aria-label="TikTok" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.36 6.36 0 006.34-6.34V8.7a8.2 8.2 0 004.78 1.52V6.79a4.85 4.85 0 01-1.02-.1z"/></svg>
       </a>
     </div>
@@ -329,9 +295,9 @@
 
   <script>
     document.querySelectorAll('a[href^="#REPLACE"]').forEach(link => {
-      link.addEventListener('click', (e) => {
+      link.addEventListener('click', e => {
         e.preventDefault();
-        alert('Replace this link with the real checkout URL.');
+        alert('Add the real $35 checkout link here.');
       });
     });
   </script>
