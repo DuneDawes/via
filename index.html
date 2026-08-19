@@ -16,134 +16,155 @@
     body {
       min-height: 100vh;
       background: #000;
-      color: #d4d0c8;
+      color: #d8d4cc;
       font-family: 'Cinzel', serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0 0 60px;
+      justify-content: flex-start;
+      padding: 0;
       position: relative;
+      overflow-x: hidden;
     }
 
-    /* full-bleed dark vignette */
+    /* dark castle atmosphere */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse at 50% 20%, rgba(40,10,15,0.45) 0%, transparent 60%),
-        radial-gradient(ellipse at 50% 80%, rgba(0,0,0,0.85) 0%, transparent 50%);
+        radial-gradient(ellipse at 50% 0%, rgba(60,15,20,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 100%, rgba(0,0,0,0.9) 0%, transparent 45%),
+        linear-gradient(180deg, #050304 0%, #000 40%, #000 100%);
       pointer-events: none;
       z-index: 0;
     }
 
+    /* side rose thorns framing */
+    .frame-left, .frame-right {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 70px;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.55;
+      background-repeat: repeat-y;
+      background-size: 70px auto;
+    }
+    .frame-left {
+      left: 0;
+      background-image: linear-gradient(90deg, rgba(40,8,12,0.6), transparent);
+    }
+    .frame-right {
+      right: 0;
+      background-image: linear-gradient(270deg, rgba(40,8,12,0.6), transparent);
+    }
+
     .container {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       width: 100%;
-      max-width: 440px;
+      max-width: 420px;
+      padding: 56px 24px 70px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 50px 24px 0;
+      text-align: center;
     }
 
     /* VIA */
     .via {
-      font-size: 0.78rem;
-      letter-spacing: 0.65em;
+      font-size: 0.8rem;
+      letter-spacing: 0.7em;
       text-transform: uppercase;
-      color: #b0a99e;
-      margin-bottom: 22px;
+      color: #b8b2a8;
+      margin-bottom: 20px;
     }
     .via::before, .via::after {
       content: "•";
-      opacity: 0.4;
-      margin: 0 10px;
+      opacity: 0.45;
+      margin: 0 12px;
       letter-spacing: 0;
     }
 
-    /* Main title - metallic feel */
+    /* Title matching the cover */
     h1 {
       font-family: 'Cinzel', serif;
       font-weight: 600;
-      font-size: clamp(1.7rem, 6.5vw, 2.15rem);
-      letter-spacing: 0.14em;
+      font-size: clamp(1.75rem, 7vw, 2.25rem);
+      letter-spacing: 0.13em;
       text-transform: uppercase;
-      text-align: center;
-      line-height: 1.12;
-      color: #e8e4dc;
+      line-height: 1.1;
+      color: #ece8e0;
       text-shadow:
-        0 1px 0 #3a3530,
-        0 2px 4px rgba(0,0,0,0.9),
-        0 0 30px rgba(200,190,170,0.12);
-      margin-bottom: 4px;
+        0 1px 0 #2c2824,
+        0 2px 6px rgba(0,0,0,0.95),
+        0 0 40px rgba(200,190,170,0.1);
+      margin-bottom: 6px;
     }
-
     h1 span {
       display: block;
-      font-size: 1.05em;
-      letter-spacing: 0.1em;
+      font-size: 1.08em;
+      letter-spacing: 0.09em;
     }
 
-    /* thin ornamental line */
     .rule {
-      width: 160px;
+      width: 180px;
       height: 1px;
-      background: linear-gradient(90deg, transparent, #6a635a, transparent);
-      margin: 22px 0 14px;
+      background: linear-gradient(90deg, transparent, #6e675e, transparent);
+      margin: 22px 0 12px;
       position: relative;
     }
-    .rule::before {
+    .rule::after {
       content: "";
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%) rotate(45deg);
-      width: 6px;
-      height: 6px;
-      border: 1px solid #6a635a;
+      width: 7px;
+      height: 7px;
+      border: 1px solid #6e675e;
       background: #000;
+      transform: translate(-50%, -50%) rotate(45deg);
     }
 
     .pillars {
-      font-size: 0.68rem;
-      letter-spacing: 0.32em;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: #7a736a;
+      color: #7a7368;
+      margin-bottom: 38px;
+    }
+
+    /* central shield */
+    .shield-wrap {
       margin-bottom: 40px;
+      filter: drop-shadow(0 12px 28px rgba(0,0,0,0.75));
     }
-
-    /* central rose emblem */
-    .emblem {
-      width: 86px;
-      height: 100px;
-      margin-bottom: 36px;
+    .shield {
+      width: 90px;
+      height: 108px;
+      background: linear-gradient(165deg, #1c1816 0%, #0a0808 100%);
+      border: 1.5px solid #4a433c;
+      clip-path: polygon(50% 0%, 100% 11%, 100% 68%, 50% 100%, 0% 68%, 0% 11%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      box-shadow: inset 0 1px 0 rgba(220,210,190,0.07);
     }
-
-    .emblem-shield {
-      width: 72px;
-      height: 86px;
-      background: linear-gradient(165deg, #1a1614 0%, #0a0808 100%);
-      border: 1px solid #4a433c;
-      clip-path: polygon(50% 0%, 100% 10%, 100% 68%, 50% 100%, 0% 68%, 0% 10%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow:
-        0 0 0 1px #000,
-        0 10px 30px rgba(0,0,0,0.7),
-        inset 0 1px 0 rgba(200,190,170,0.06);
+    .shield::before {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px solid rgba(80,70,60,0.4);
+      clip-path: polygon(50% 0%, 100% 11%, 100% 68%, 50% 100%, 0% 68%, 0% 11%);
+      pointer-events: none;
     }
-
-    .emblem-rose {
-      font-size: 1.9rem;
+    .rose {
+      font-size: 2.3rem;
       line-height: 1;
-      filter: grayscale(0.15) contrast(1.1);
+      filter: contrast(1.15) saturate(0.9);
     }
 
     /* buttons */
@@ -151,105 +172,93 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 11px;
+      gap: 12px;
     }
 
     .btn {
       display: block;
       text-decoration: none;
-      text-align: center;
-      padding: 16px 18px;
-      background: #0c0a0a;
-      border: 1px solid #2e2a26;
-      color: #d4d0c8;
-      transition: all 0.2s ease;
+      padding: 17px 20px;
+      background: #0a0808;
+      border: 1px solid #2c2824;
+      color: #d8d4cc;
       font-family: 'Cinzel', serif;
       letter-spacing: 0.1em;
+      transition: border-color 0.2s, background 0.2s;
     }
-
     .btn.primary {
-      border-color: #4a1e24;
-      background: linear-gradient(180deg, #120c0e 0%, #0a0708 100%);
-      box-shadow: 0 0 0 1px rgba(80,20,30,0.2);
+      border-color: #4a1c24;
+      background: linear-gradient(180deg, #120c0e, #080606);
     }
-
     .btn.primary:hover {
-      border-color: #7a2e38;
+      border-color: #7a2c38;
       background: #140e10;
     }
-
     .btn.secondary:hover {
       border-color: #4a433c;
-      background: #121010;
+      background: #100e0e;
     }
 
     .btn-title {
       display: block;
       font-weight: 600;
-      font-size: 0.9rem;
-      color: #e8e4dc;
-      margin-bottom: 2px;
+      font-size: 0.92rem;
+      color: #ece8e0;
+      margin-bottom: 3px;
     }
-
     .btn-sub {
       display: block;
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      color: #7a736a;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
+      color: #7a7368;
     }
-
     .price {
       display: inline-block;
-      margin-top: 8px;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      color: #a05060;
-      border: 1px solid #4a1e24;
-      padding: 2px 10px;
+      margin-top: 9px;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      color: #b05060;
+      border: 1px solid #4a1c24;
+      padding: 2px 12px;
     }
 
-    /* socials */
     .socials {
       display: flex;
-      gap: 12px;
-      margin-top: 40px;
+      gap: 14px;
+      margin-top: 42px;
     }
-
     .social {
-      width: 40px;
-      height: 40px;
-      border: 1px solid #2e2a26;
+      width: 42px;
+      height: 42px;
+      border: 1px solid #2c2824;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #7a736a;
+      color: #7a7368;
       text-decoration: none;
-      transition: all 0.2s ease;
       background: #0a0808;
+      transition: all 0.2s;
     }
-
     .social:hover {
       border-color: #4a433c;
-      color: #d4d0c8;
+      color: #d8d4cc;
     }
-
-    .social svg {
-      width: 17px;
-      height: 17px;
-      fill: currentColor;
-    }
+    .social svg { width: 17px; height: 17px; fill: currentColor; }
 
     footer {
-      margin-top: 50px;
+      margin-top: 52px;
       font-size: 0.65rem;
-      letter-spacing: 0.4em;
+      letter-spacing: 0.45em;
       text-transform: uppercase;
       color: #3a3530;
     }
   </style>
 </head>
 <body>
+  <div class="frame-left"></div>
+  <div class="frame-right"></div>
+
   <div class="container">
     <div class="via">VIA</div>
 
@@ -262,16 +271,16 @@
 
     <div class="pillars">Looks • Presence • Structure</div>
 
-    <div class="emblem">
-      <div class="emblem-shield">
-        <div class="emblem-rose">🌹</div>
+    <div class="shield-wrap">
+      <div class="shield">
+        <div class="rose">🌹</div>
       </div>
     </div>
 
     <div class="links">
       <a href="#REPLACE-WITH-YOUR-CHECKOUT-LINK" class="btn primary">
         <span class="btn-title">Aesthetic Blueprint</span>
-        <span class="btn-sub">Full Access</span>
+        <span class="btn-sub">Enter</span>
         <span class="price">$35</span>
       </a>
 
@@ -282,10 +291,10 @@
     </div>
 
     <div class="socials">
-      <a href="https://www.instagram.com/viakhn/?hl=en" class="social" aria-label="Instagram" target="_blank" rel="noopener">
+      <a href="https://www.instagram.com/viakhn/?hl=en" class="social" target="_blank" rel="noopener" aria-label="Instagram">
         <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
       </a>
-      <a href="https://www.tiktok.com/@via040301" class="social" aria-label="TikTok" target="_blank" rel="noopener">
+      <a href="https://www.tiktok.com/@via040301" class="social" target="_blank" rel="noopener" aria-label="TikTok">
         <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.36 6.36 0 006.34-6.34V8.7a8.2 8.2 0 004.78 1.52V6.79a4.85 4.85 0 01-1.02-.1z"/></svg>
       </a>
     </div>
@@ -294,10 +303,10 @@
   </div>
 
   <script>
-    document.querySelectorAll('a[href^="#REPLACE"]').forEach(link => {
-      link.addEventListener('click', e => {
+    document.querySelectorAll('a[href^="#REPLACE"]').forEach(a => {
+      a.addEventListener('click', e => {
         e.preventDefault();
-        alert('Add the real $35 checkout link here.');
+        alert('Drop the real $35 checkout link here.');
       });
     });
   </script>
