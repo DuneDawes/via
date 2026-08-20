@@ -12,7 +12,7 @@ Completely separate from any other projects.
 
 - `index.html` — fully self-contained single page (no build step needed)
 - Beautiful medieval/roses aesthetic
-- Main CTA: **Beauty Blueprint — $35**
+- Main CTA: **Beauty Blueprint — $20**
 - Secondary links + social icons (Instagram & TikTok placeholders)
 
 ---
